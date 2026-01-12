@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MCPETiers - Leaderboard</title>
+
+  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0f0f17;
+      font-family: 'Minecraftia', monospace;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      overflow-x: hidden;
+      animation: fadeInPage 1.2s ease forwards;
+    }
+
+    @keyframes fadeInPage {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .minecraft-logo {
+      font-size: 2.8rem;
+      color: #d0d0d0;
+      text-shadow: 4px 4px 0 #000, 6px 6px 0 #000a;
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .tabs {
+      display: flex;
+      width: 90%;
+      max-width: 500px;
+      padding: 10px;
+    }
+
+    .tab {
+      padding: 12px 20px;
+      background: #1b1b24;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #ffcc33;
+      border: 2px solid #ffcc33;
+      box-shadow: 0 0 8px #ffcc33aa;
+    }
+
+    .leaderboard {
+      width: 90%;
+      max-width: 500px;
+      background: #1a1a23;
+      border-radius: 14px;
+      padding: 20px 10px;
+      margin-top: 10px;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+
+    .player-card {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background: #14141c;
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      position: relative;
+      animation: glitchAnim 2.5s infinite;
+    }
+
+    @keyframes glitchAnim {
+      0% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(5% 0 20% 0); transform: translate(-2px,-2px); }
+      40% { clip-path: inset(10% 0 15% 0); transform: translate(2px, 2px); }
+      60% { clip-path: inset(15% 0 10% 0); transform: translate(-1px,1px); }
+      80% { clip-path: inset(20% 0 5% 0); transform: translate(1px,-1px); }
+      100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    }
+
+    .rank-number {
+      font-size: 1.2rem;
+      color: #ffcc33;
+      width: 35px;
+      text-align: center;
+      text-shadow: 0 0 6px #ffcc33;
+    }
+
+    .player-name {
+      font-size: 1rem;
+      color: #ffffff;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .crown {
+      font-size: 1.2rem;
+      filter: drop-shadow(0 0 6px gold);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="minecraft-logo">MCPETiers</h1>
+
+  <div class="tabs">
+    <div class="tab">OVERALL</div>
+  </div>
+
+  <div class="leaderboard" id="leaderboard"></div>
+
+  <script>
+
+    const leaderboard = document.getElementById("leaderboard");
+
+    for (let i = 1; i <= 50; i++) {
+
+      const card = document.createElement("div");
+      card.classList.add("player-card");
+
+      const rank = document.createElement("div");
+      rank.classList.add("rank-number");
+      rank.textContent = i;
+
+      const name = document.createElement("div");
+      name.classList.add("player-name");
+
+      if (i === 1) name.textContent = "VinyKing";
+      else if (i === 2) name.textContent = "Es Paranoia";
+      else if (i === 3) name.textContent = "nrukx7";
+      else if (i === 4) name.textContent = "glaceand";
+      else if (i === 5) name.textContent = "bluezzk";
+      else if (i === 6) name.textContent = "feijaobw";
+      else if (i === 7) name.textContent = "dask";
+      else if (i === 8) name.textContent = "! Sagas Rlk";
+      else if (i === 9) name.textContent = "Det";
+      else if (i === 10) name.textContent = "malos habitoss";
+      else if (i === 11) name.textContent = "Zxzadas";
+      else if (i === 12) name.textContent = "pedrinhofpx";
+      else if (i === 13) name.textContent = "XCrisxz7";
+      else if (i === 14) name.textContent = "zyK1iiU";
+      else if (i === 15) name.textContent = "xZkvyZx";
+      else if (i === 16) name.textContent = "altbel";
+      else if (i === 17) name.textContent = "zbala3276";
+      else if (i === 18) name.textContent = "LzyrZxZ";
+      else if (i === 19) name.textContent = "biscoitoproz";
+      else if (i === 20) name.textContent = "Dr1cps";
+
+      else if (i === 21) name.textContent = "Ferzzkx";             // ALTERADO AQUI
+      else if (i === 22) name.textContent = "ValhallazZzX";       // ALTERADO AQUI
+
+      else if (i === 23) name.textContent = "zgustazn";
+      else if (i === 24) name.textContent = "Black6961553";
+
+      else if (i === 49) name.textContent = "TheMercy010";
+      else if (i === 50) name.textContent = "superbatolkk";
+
+      else name.textContent = `Player${i}`;
+
+      if (i === 1) {
+        const crown = document.createElement("span");
+        crown.classList.add("crown");
+        crown.textContent = "👑";
+        name.appendChild(crown);
+      }
+
+      card.appendChild(rank);
+      card.appendChild(name);
+      leaderboard.appendChild(card);
+    }
+
+  </script>
+
+</body>
+  </html>
